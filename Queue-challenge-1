@@ -1,0 +1,76 @@
+#include<stdio.h>
+
+int queue[100000];
+int rear = -1;
+int front = -1;
+int size;
+
+void enqueue(int value){
+    if(rear == size - 1){
+        printf("Queue Overflow\n");
+    }
+    else{
+        if(front == -1){
+            front = 0;
+        }
+        rear++;
+        queue[rear] = value;
+    }
+}
+
+void dequeue(){
+    if(front == -1 || front > rear){
+        printf("Queue Underflow\n");
+    }
+    else{
+        printf("%d\n", queue[front]);
+        front++;
+    }
+}
+
+void peek(){
+    if(front == -1 || front > rear){
+        printf("Queue Underflow\n");
+    }
+    else{
+        printf("%d\n", queue[front]);
+    }
+}
+
+void display(){
+    if(front == -1 || front > rear){
+        printf("Queue is Empty\n");
+    }
+    else{
+        for(int i = front; i <= rear; i++){
+            printf("%d ", queue[i]);
+        }
+        printf("\n");
+    }
+}
+
+int main(){
+    int n, c, x;
+    scanf("%d", &size);
+    scanf("%d", &n);
+
+    for(int i = 0; i < n; i++){
+        scanf("%d", &c);
+
+        if(c == 1){
+            scanf("%d", &x);
+            enqueue(x);
+        }
+        else if(c == 2){
+            dequeue();
+        }
+        else if(c == 3){
+            peek();
+        }
+        else if(c == 4){
+            display();
+        }
+    }
+
+    return 0;
+}
