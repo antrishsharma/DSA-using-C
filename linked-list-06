@@ -38,6 +38,22 @@ struct node* ib(struct node* head,int value){
     
 }
 //adding new function endlist() to insert element in the last of the linked list
+
+struct node* endlist(struct node* head,int value){
+    struct node* newnode = createNode(value);
+   
+        struct node*  temp=head;
+        while(temp->next != NULL){
+            
+            temp= temp-> next;
+            temp->next=newnode;
+        
+    
+         return head;}
+    
+}
+
+
 int main(){
     struct node* head=NULL;
 head=ib(head,10);
