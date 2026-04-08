@@ -28,7 +28,7 @@ void display(struct node* head) {
     
     printf("NULL\n");
 }
-// nsertion at beginning
+// insertion at beginning
 struct node* ib(struct node* head,int value){
     
     struct node* newnode= createNode(value);
@@ -37,11 +37,12 @@ struct node* ib(struct node* head,int value){
     return newnode;
     
 }
-
+//adding new function endlist() to insert element in the last of the linked list
 int main(){
     struct node* head=NULL;
 head=ib(head,10);
     head=ib(head,20);
+head=endlist(head,30);
     display(head);
     return 0;
     
