@@ -52,7 +52,33 @@ struct node* endlist(struct node* head,int value){
          return head;}
     
 }
-
+// sdding new operation insertion at given pos.
+struct node* pos(struct node*head , int value , int pos){
+    if(pos < 0){
+        printf("\n  invalid pos ");
+        return head;
+    }
+    struct node* newnode = createNode(value);
+    if(pos  == 1){
+        newnode->next = head;
+        return newnode;
+    }
+    
+    struct node* temp= head;
+    int i;
+    for(i=1;i<pos-1 && temp != NULL ; i++){
+        
+        temp = temp->next;
+        if(temp == NULL){
+            
+            printf("\n postion not available");
+        }
+        return head;
+    }
+    newnode->next=temp->next;
+    temp->next =  newnode;
+    return head;
+}
 
 int main(){
     struct node* head=NULL;
@@ -60,6 +86,7 @@ head=ib(head,10);
     head=ib(head,20);
 head=endlist(head,30);
     display(head);
+pos(head,45,2);
     return 0;
     
 }
