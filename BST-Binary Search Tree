@@ -1,0 +1,106 @@
+#include<stdio.h>
+#include<stdlib.h>
+struct node{
+    int data;
+    struct node* next;};
+    
+struct node* createnode(int value){
+    struct node* newnode = (struct node*)malloc(sizeof(struct node));
+    newnode->data = value;
+    newnode->Left = NULL;
+    newnode->Right = NULL;
+    
+}
+
+struct node* insertnode(struct node* root, int value){
+    
+    if(root == NULL){
+        return createNode(value);
+        
+    }
+    else if(value < root->data){
+        root->Left = insertnode(root->Left, value);
+        
+    }
+    else if(value> root->data){
+
+        root->Right = insertnode(root->Right, value);
+
+
+    }
+    return root;
+}
+
+void preeorder(struct node*root,int value){
+    if(
+        root!=NULL){
+        printf("%d ",root->data);
+        preorder(root->Left);
+        preorder(root->Right);
+
+        }}
+
+        void inorder(struct node*root,int value){
+            if(root!=NULL){     
+                inorder(root->Left);
+                printf("%d ",root->data);
+                inorder(root->Right);
+
+            } }
+            
+            void postorder(struct node*root,int value){
+                if(root!=NULL){
+                    postorder(root->Left);
+                    postorder(root->Right);
+                    printf("%d ",root->data);
+
+                }
+            } 
+            struct node* search(struct node* root, int value){
+              if(root ==NULL){
+                return;
+              }   
+              else if(root == svalue){
+                return root;
+              }
+              else if(svalue < root->data){
+                return search(root->Left, svalue);
+              }
+              else{
+                return search(root->Right, svalue);
+            }
+            }
+
+            struct node* minvalue(struct node* root){
+              while(root->left != NULL){
+                root = root->Left;
+                return root;}}
+
+                struct node* delete(struct node* root, int value){
+                    if(root == NULL){
+                        return root;
+                    }
+                    else if(value < root->data){
+                        root->Left = delete(root->Left, value);
+                    }
+                    else if(value > root->data){
+                        root->Right = delete(root->Right, value);
+                    }
+                    else{
+                        if(root->Left == NULL){
+                            struct node* temp = root->Right;
+                            free(root);
+                            return temp;
+                        }
+                        else if(root->Right == NULL){
+                            struct node* temp = root->Left;
+                            free(root);
+                            return temp;
+                        }
+                        struct node* temp = minvalue(root->Right);
+                        root->data = temp->data;
+                        root->Right = delete(root->Right, temp->data);
+                    }
+                    return root;
+                }
+                
